@@ -8,6 +8,9 @@
 	<classpathentry kind="var" path="cscore" sourcepath="cscore.sources"/>
 	<classpathentry kind="var" path="USERLIBS_DIR/CTRE_Phoenix-sources.jar"/>
 	<classpathentry kind="var" path="USERLIBS_DIR/CTRE_Phoenix.jar"/>
+<<<<<<< HEAD
 	<classpathentry kind="var" path="wpiutil" sourcepath="wpiutil.sources"/>
+=======
+>>>>>>> master
 	<classpathentry kind="output" path="bin"/>
 </classpath>

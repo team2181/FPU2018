@@ -53,7 +53,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public void drive(Joystick j) {
-    	double spd = j.getRawAxis(0);
+    	double spd = j.getRawAxis(1);
     	double rot = j.getRawAxis(4);
     	diffDrive.arcadeDrive(spd, rot);
     }

@@ -77,6 +77,7 @@ public class Robot extends TimedRobot {
         chooser2.addDefault("No", false);
         chooser2.addObject("Yes", true);
         SmartDashboard.putData("Go for it", chooser2);
+        
     }
 
     /**
@@ -122,6 +123,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopPeriodic() {
+    	SmartDashboard.putNumber("Distance", driveTrain.getDistance());
         Scheduler.getInstance().run();
     }
     

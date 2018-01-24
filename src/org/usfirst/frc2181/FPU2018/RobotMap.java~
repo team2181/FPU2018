@@ -81,7 +81,7 @@ public class RobotMap {
         driveTrainRightMotor2 = new WPI_TalonSRX(4);
         
         
-        driveTrainDiffDrive2 = new DifferentialDrive(driveTrainLeftMotor2, driveTrainRightMotor2);
+        driveTrainDiffDrive2 = new DifferentialDrive(driveTrainRightMotor2, driveTrainLeftMotor2);
         LiveWindow.addActuator("DriveTrain", "DiffDrive2", driveTrainDiffDrive2);
         driveTrainDiffDrive2.setSafetyEnabled(true);
         driveTrainDiffDrive2.setExpiration(0.1);

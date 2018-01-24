@@ -72,26 +72,6 @@ Children:
           value: '4'
       Base: Quadrature Encoder
       Name: RightEncoder
-    - Children: []
-      Properties:
-        Ping Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id013 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-            '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22',
-            '23', '24', '25']
-          default: '0'
-          name: Ping Channel (Digital)
-          validators: &id014 [DigitalChannel]
-          value: '7'
-        Echo Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id015 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-            '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22',
-            '23', '24', '25']
-          default: '0'
-          name: Echo Channel (Digital)
-          validators: &id016 [DigitalChannel]
-          value: '6'
-      Base: Ultrasonic
-      Name: Ultrasonic 1
     - Children:
       - Children: []
         Properties:
@@ -120,7 +100,7 @@ Children:
           default: 1
           name: Right Motor
           type: PIDOutput
-          validators: [RobotDrive2, ChildDropdownSelected]
+          validators: &id009 [RobotDrive2, ChildDropdownSelected]
           value: DriveTrain RightMotor
         Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1,
           name: Maximum Output, validators: null, value: 1.0}
@@ -128,7 +108,7 @@ Children:
           default: 0
           name: Left Motor
           type: PIDOutput
-          validators: [RobotDrive2, ChildDropdownSelected]
+          validators: &id010 [RobotDrive2, ChildDropdownSelected]
           value: DriveTrain LeftMotor
         Safety Expiration Time: !!robotbuilder.data.properties.DoubleProperty {default: 0.1,
           name: Safety Expiration Time, validators: null, value: 0.1}
@@ -136,20 +116,62 @@ Children:
           name: Safety Enabled, validators: null, value: true}
       Base: Differential Drive
       Name: DiffDrive
+    - Children:
+      - Children: []
+        Properties:
+          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id007
+            default: '2'
+            name: CAN ID
+            validators: *id008
+            value: '3'
+        Base: Talon SRX
+        Name: LeftMotor2
+      - Children: []
+        Properties:
+          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id007
+            default: '2'
+            name: CAN ID
+            validators: *id008
+            value: '4'
+        Base: Talon SRX
+        Name: RightMotor2
+      Properties:
+        Right Motor: !!robotbuilder.data.properties.ChildSelectionProperty
+          default: 1
+          name: Right Motor
+          type: PIDOutput
+          validators: *id009
+          value: DriveTrain LeftMotor2
+        Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1,
+          name: Maximum Output, validators: null, value: 1.0}
+        Left Motor: !!robotbuilder.data.properties.ChildSelectionProperty
+          default: 0
+          name: Left Motor
+          type: PIDOutput
+          validators: *id010
+          value: DriveTrain RightMotor2
+        Safety Expiration Time: !!robotbuilder.data.properties.DoubleProperty {default: 0.1,
+          name: Safety Expiration Time, validators: null, value: 0.1}
+        Safety Enabled: !!robotbuilder.data.properties.BooleanProperty {default: true,
+          name: Safety Enabled, validators: null, value: true}
+      Base: Differential Drive
+      Name: DiffDrive2
     - Children: []
       Properties:
         Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id009 ['0', '1', '2', '3', '4', '5', '6', '7']
+          choices: &id011 ['0', '1', '2', '3', '4', '5', '6', '7']
           default: '0'
           name: Output Channel (Solenoid)
-          validators: &id010 [Solenoid]
+          validators: &id012 [Solenoid]
           value: '0'
         Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id011 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+          choices: &id013 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
             '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
           default: '0'
           name: Output PCM (Solenoid)
-          validators: &id012 [Solenoid]
+          validators: &id014 [Solenoid]
           value: '1'
       Base: Solenoid
       Name: GearShift
@@ -173,36 +195,40 @@ Children:
   - Children:
     - Children: []
       Properties:
-        Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id009
+        Ping Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
+            '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23',
+            '24', '25']
           default: '0'
-          name: Output Channel (Solenoid)
-          validators: *id010
-          value: '0'
-        Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          name: Ping Channel (Digital)
+          validators: [DigitalChannel]
+          value: '7'
+        Echo Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
+            '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23',
+            '24', '25']
+          default: '0'
+          name: Echo Channel (Digital)
+          validators: [DigitalChannel]
+          value: '6'
+      Base: Ultrasonic
+      Name: Ultrasonic 1
+    - Children: []
+      Properties:
+        Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id011
           default: '0'
-          name: Output PCM (Solenoid)
+          name: Output Channel (Solenoid)
           validators: *id012
+          value: '0'
+        Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id013
+          default: '0'
+          name: Output PCM (Solenoid)
+          validators: *id014
           value: '0'
       Base: Solenoid
       Name: Pusher
-    - Children: []
-      Properties:
-        Ping Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id013
-          default: '0'
-          name: Ping Channel (Digital)
-          validators: *id014
-          value: '11'
-        Echo Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id015
-          default: '0'
-          name: Echo Channel (Digital)
-          validators: *id016
-          value: '9'
-      Base: Ultrasonic
-      Name: Ultrasonic 1
     Properties:
       Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Send to SmartDashboard, validators: null, value: false}
@@ -217,52 +243,10 @@ Children:
         default: []
         name: Constants
         validators: null
-        value: &id017 []
+        value: &id015 []
     Base: Subsystem
     Name: FlippyDoo
   - Children:
-    - Children:
-      - Children: []
-        Properties:
-          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id007
-            default: '2'
-            name: CAN ID
-            validators: *id008
-            value: '3'
-        Base: Talon SRX
-        Name: LeftSpinner
-      - Children: []
-        Properties:
-          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id007
-            default: '2'
-            name: CAN ID
-            validators: *id008
-            value: '4'
-        Base: Talon SRX
-        Name: RightSpinner
-      Properties:
-        SpeedController4: !!robotbuilder.data.properties.ChildSelectionProperty {
-          default: null, name: SpeedController4, type: PIDOutput, validators: null,
-          value: null}
-        SpeedController3: !!robotbuilder.data.properties.ChildSelectionProperty {
-          default: null, name: SpeedController3, type: PIDOutput, validators: null,
-          value: null}
-        SpeedController2: !!robotbuilder.data.properties.ChildSelectionProperty
-          default: 1
-          name: SpeedController2
-          type: PIDOutput
-          validators: [SpeedControllerGroup, ChildDropdownSelected]
-          value: Zucc RightSpinner
-        SpeedController1: !!robotbuilder.data.properties.ChildSelectionProperty
-          default: 0
-          name: SpeedController1
-          type: PIDOutput
-          validators: [SpeedControllerGroup, ChildDropdownSelected]
-          value: Zucc LeftSpinner
-      Base: Speed Controller Group
-      Name: SpinControl
     - Children: []
       Properties:
         Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
@@ -275,6 +259,48 @@ Children:
           value: '0'
       Base: Limit Switch
       Name: SpinStop
+    - Children:
+      - Children: []
+        Properties:
+          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id007
+            default: '2'
+            name: CAN ID
+            validators: *id008
+            value: '9'
+        Base: Talon SRX
+        Name: LeftSpinner
+      - Children: []
+        Properties:
+          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id007
+            default: '2'
+            name: CAN ID
+            validators: *id008
+            value: '10'
+        Base: Talon SRX
+        Name: RightSpinner
+      Properties:
+        Right Motor: !!robotbuilder.data.properties.ChildSelectionProperty
+          default: 1
+          name: Right Motor
+          type: PIDOutput
+          validators: *id009
+          value: Zucc RightSpinner
+        Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1,
+          name: Maximum Output, validators: null, value: 1.0}
+        Left Motor: !!robotbuilder.data.properties.ChildSelectionProperty
+          default: 0
+          name: Left Motor
+          type: PIDOutput
+          validators: *id010
+          value: Zucc LeftSpinner
+        Safety Expiration Time: !!robotbuilder.data.properties.DoubleProperty {default: 0.1,
+          name: Safety Expiration Time, validators: null, value: 0.1}
+        Safety Enabled: !!robotbuilder.data.properties.BooleanProperty {default: true,
+          name: Safety Enabled, validators: null, value: true}
+      Base: Differential Drive
+      Name: SpinControl
     Properties:
       Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Send to SmartDashboard, validators: null, value: false}
@@ -289,26 +315,46 @@ Children:
         default: []
         name: Constants
         validators: null
-        value: *id017
+        value: *id015
     Base: Subsystem
     Name: Zucc
   - Children:
     - Children: []
       Properties:
         Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id009
-          default: '0'
-          name: Output Channel (Solenoid)
-          validators: *id010
-          value: '0'
-        Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id011
           default: '0'
-          name: Output PCM (Solenoid)
+          name: Output Channel (Solenoid)
           validators: *id012
+          value: '0'
+        Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id013
+          default: '0'
+          name: Output PCM (Solenoid)
+          validators: *id014
           value: '4'
       Base: Solenoid
       Name: Locking
+    - Children: []
+      Properties:
+        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id007
+          default: '2'
+          name: CAN ID
+          validators: *id008
+          value: '7'
+      Base: Talon SRX
+      Name: BottomMotor
+    - Children: []
+      Properties:
+        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id007
+          default: '2'
+          name: CAN ID
+          validators: *id008
+          value: '6'
+      Base: Talon SRX
+      Name: TopMotor
     Properties:
       Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Send to SmartDashboard, validators: null, value: false}
@@ -323,7 +369,7 @@ Children:
         default: []
         name: Constants
         validators: null
-        value: *id017
+        value: *id015
     Base: Subsystem
     Name: Lift
   Properties: {}
@@ -521,10 +567,10 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: DriveTrain}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id018 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id018
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command

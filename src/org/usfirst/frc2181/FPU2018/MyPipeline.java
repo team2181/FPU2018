@@ -13,7 +13,8 @@ import org.opencv.features2d.FeatureDetector;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.*;
 import org.opencv.objdetect.*;
-
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.vision.VisionPipeline;
 /**
 * GripPipelineCub class.
@@ -22,11 +23,14 @@ import edu.wpi.first.wpilibj.vision.VisionPipeline;
 *
 * @author GRIP
 */
-public class MyPipeline implements VisionPipeline {
+public class MyPipeline implements VisionPipeline{
  //Outputs
+
  private Mat hslThresholdOutput = new Mat();
  private ArrayList<MatOfPoint> findContoursOutput = new ArrayList<MatOfPoint>();
  private ArrayList<MatOfPoint> filterContoursOutput = new ArrayList<MatOfPoint>();
+ 
+
  static {
   System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
  }

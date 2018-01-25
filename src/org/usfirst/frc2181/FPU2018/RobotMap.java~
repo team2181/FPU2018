@@ -38,7 +38,7 @@ public class RobotMap {
     public static DigitalInput zuccSpinStop;
     public static WPI_TalonSRX zuccLeftSpinner;
     public static WPI_TalonSRX zuccRightSpinner;
-    public static DifferentialDrive zuccSpinControl;
+    public static SpeedControllerGroup zuccSpinControl;
     public static Solenoid liftLocking;
     public static WPI_TalonSRX liftBottomMotor;
     public static WPI_TalonSRX liftTopMotor;
@@ -72,12 +72,9 @@ public class RobotMap {
         zuccRightSpinner = new WPI_TalonSRX(10);
         
         
-        zuccSpinControl = new DifferentialDrive(zuccLeftSpinner, zuccRightSpinner);
+        zuccSpinControl = new SpeedControllerGroup(zuccLeftSpinner, zuccRightSpinner  );
         LiveWindow.addActuator("Zucc", "SpinControl", zuccSpinControl);
-        zuccSpinControl.setSafetyEnabled(true);
-        zuccSpinControl.setExpiration(0.1);
-        zuccSpinControl.setMaxOutput(1.0);
-
+        
         liftLocking = new Solenoid(4, 0);
         LiveWindow.addActuator("Lift", "Locking", liftLocking);
         

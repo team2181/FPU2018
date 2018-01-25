@@ -47,7 +47,7 @@ public class LeftAutonomous extends Command {
     @Override
     protected void execute() {
     	if (selected & gameData.charAt(0) == 'L') {
-    		Robot.driveTrain.driveAuto(0, -0.6);
+    		Robot.driveTrain.driveAuto(0.0, -0.6);
     	}
     }
 

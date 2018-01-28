@@ -37,7 +37,12 @@ public class AutoLeft extends CommandGroup {
 		}
 		
 		addSequential(new VISCubeGrab());
-		addSequential(new AutoLToRScale());
+		if(Robot.gameData.charAt(1) == 'L')
+		{
+			addSequential(new AutoSameSideScale());
+		} else {
+			addSequential(new AutoLToRScale());
+		}
 		//SET LIFT TO BOTTOM
 		//BACK UP
 

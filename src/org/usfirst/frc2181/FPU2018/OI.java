@@ -78,7 +78,7 @@ public class OI {
         cubeFlip = new JoystickButton(joystick, 2);
         cubeFlip.whenPressed(new FlipOff());
         driveMode = new JoystickButton(joystick, 1);
-        driveMode.whenPressed(new DriveSwitch());
+        driveMode.whileHeld(new DriveSwitch());
 
 
         // SmartDashboard Buttons

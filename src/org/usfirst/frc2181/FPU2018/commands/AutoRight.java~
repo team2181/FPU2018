@@ -37,7 +37,14 @@ public class AutoRight extends CommandGroup {
 		}
 		
 		addSequential(new VISCubeGrab());
-		addSequential(new AutoRToLScale());
+		
+		if(Robot.gameData.charAt(1) == 'R')
+		{
+			addSequential(new AutoSameSideScale());
+		} else {
+			addSequential(new AutoRToLScale());
+		}
+		
 		//SET LIFT TO BOTTOM
 		//BACK UP
 

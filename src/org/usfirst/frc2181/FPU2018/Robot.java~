@@ -94,19 +94,19 @@ public class Robot extends TimedRobot {
         chooser2.addObject("Yes", true);
         SmartDashboard.putData("Go for it", chooser2);
         
-        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-        camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
-
-        visionThread = new VisionThread(camera, new MyPipeline(), pipeline -> {
-            if (!pipeline.filterContoursOutput().isEmpty()) {
-                Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
-                synchronized (imgLock) {
-                    centerX = r.x + (r.width / 2);
-                }
-            }
-        });
-
-        visionThread.start();
+//        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+//        camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+//
+//        visionThread = new VisionThread(camera, new MyPipeline(), pipeline -> {
+//            if (!pipeline.filterContoursOutput().isEmpty()) {
+//                Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
+//                synchronized (imgLock) {
+//                    centerX = r.x + (r.width / 2);
+//                }
+//            }
+//        });
+//
+//        visionThread.start();
         
     }
 
@@ -138,17 +138,17 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void autonomousPeriodic() {
-    	double centerX;
-        synchronized (imgLock) {
-            centerX = this.centerX;
-        }
-        arr[4] = arr[3]; arr[3] = arr[2]; arr[2] = arr[1]; arr[1] = arr[0]; arr[0] = centerX;
-        double avg = (arr[0]+arr[1]+arr[2]+arr[3]+arr[4])/5.0;
-        driveTrain.setSpot(avg);
-        //double turn = avg - (IMG_WIDTH / 2);
-        //driveTrain.driveAuto(0, -turn*0.1/10);
-        SmartDashboard.putNumber("Xpos", avg);
-        //Scheduler.getInstance().run();
+//    	double centerX;
+//        synchronized (imgLock) {
+//            centerX = this.centerX;
+//        }
+//        arr[4] = arr[3]; arr[3] = arr[2]; arr[2] = arr[1]; arr[1] = arr[0]; arr[0] = centerX;
+//        double avg = (arr[0]+arr[1]+arr[2]+arr[3]+arr[4])/5.0;
+//        driveTrain.setSpot(avg);
+//        //double turn = avg - (IMG_WIDTH / 2);
+//        //driveTrain.driveAuto(0, -turn*0.1/10);
+//        SmartDashboard.putNumber("Xpos", avg);
+//        //Scheduler.getInstance().run();
     }
 
     @Override

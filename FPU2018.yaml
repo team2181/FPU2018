@@ -206,7 +206,7 @@ Children:
               default: '2'
               name: CAN ID
               validators: *id002
-              value: '3'
+              value: '4'
           Base: Talon SRX
           Name: LeftMotor2
         Properties:
@@ -248,7 +248,7 @@ Children:
               default: '2'
               name: CAN ID
               validators: *id002
-              value: '4'
+              value: '3'
           Base: Talon SRX
           Name: RightMotor2
         Properties:
@@ -379,7 +379,7 @@ Children:
       Name: GearShift
     Properties:
       Limit Output: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Limit Output, validators: null, value: false}
+        name: Limit Output, validators: null, value: true}
       D: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: D, validators: null,
         value: 0.0}
       Default command parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -399,15 +399,15 @@ Children:
         validators: null
         value: []
       I: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: I, validators: null,
-        value: 0.1}
+        value: 4.0E-5}
       Minimum Input: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: Minimum Input,
         validators: null, value: 0.0}
       Limit Input: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Limit Input, validators: null, value: false}
       Minimum Output: !!robotbuilder.data.properties.DoubleProperty {default: -1,
-        name: Minimum Output, validators: null, value: -1.0}
+        name: Minimum Output, validators: null, value: -0.7}
       P: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: P, validators: null,
-        value: 1.0}
+        value: 0.002}
       Input: !!robotbuilder.data.properties.ChildSelectionProperty
         default: 0
         name: Input
@@ -417,7 +417,7 @@ Children:
       Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Send to SmartDashboard, validators: null, value: true}
       Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Maximum Output,
-        validators: null, value: 1.0}
+        validators: null, value: 0.7}
       Output: !!robotbuilder.data.properties.ChildSelectionProperty
         default: 0
         name: Output
@@ -654,7 +654,7 @@ Children:
       Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Run When Disabled, validators: null, value: false}
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: None}
+        name: Requires, type: Subsystem, validators: null, value: DriveTrain}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
         default: []
         name: Parameter presets

@@ -43,6 +43,10 @@ public class ZuccIn extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+    	Robot.zucc.setSpin();
+    	if ( == true) {
+    		Robot.zucc.stopSpin();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

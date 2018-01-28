@@ -67,17 +67,17 @@ public class OI {
 
         joystick = new Joystick(0);
         
-        zuccOutBtn = new JoystickButton(joystick, 6);
+        zuccOutBtn = new JoystickButton(joystick, 4);
         zuccOutBtn.whileHeld(new ZuccOut());
-        zuccInBtn = new JoystickButton(joystick, 5);
+        zuccInBtn = new JoystickButton(joystick, 3);
         zuccInBtn.whileHeld(new ZuccIn());
-        liftDownBtn = new JoystickButton(joystick, 4);
+        liftDownBtn = new JoystickButton(joystick, 6);
         liftDownBtn.whileHeld(new LiftDown());
-        liftUpBtn = new JoystickButton(joystick, 3);
+        liftUpBtn = new JoystickButton(joystick, 5);
         liftUpBtn.whileHeld(new LiftUp());
-        cubeFlip = new JoystickButton(joystick, 2);
+        cubeFlip = new JoystickButton(joystick, 1);
         cubeFlip.whenPressed(new FlipOff());
-        driveMode = new JoystickButton(joystick, 1);
+        driveMode = new JoystickButton(joystick, 2);
         driveMode.whileHeld(new DriveSwitch());
 
 

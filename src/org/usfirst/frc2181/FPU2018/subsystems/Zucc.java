@@ -59,6 +59,16 @@ public class Zucc extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
+    public boolean getLimit() {
+    	return spinStop.get();
+    }
+    
+    public void setSpin() {
+    	spinControl.set(.7);
+    }
+    
+    public void stopSpin() {
+    	spinControl.set(0.0);
+    }
 }
 

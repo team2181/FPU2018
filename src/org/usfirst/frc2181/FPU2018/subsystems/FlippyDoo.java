@@ -55,6 +55,9 @@ public class FlippyDoo extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+    public void setPusher(boolean on) {
+    	pusher.set(boolean on);
+    }
 
 }
 

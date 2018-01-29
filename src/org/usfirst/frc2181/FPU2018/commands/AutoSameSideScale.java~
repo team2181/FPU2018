@@ -43,6 +43,7 @@ public class AutoSameSideScale extends Command {
     @Override
     protected void execute() {
     	//FIND GYRO
+    	//LIFT LIFT ALL THE WAY
     	//GO TO SCALE
     	//IF AT SCALE Robot.zucc.ZuccOut(true);
     }

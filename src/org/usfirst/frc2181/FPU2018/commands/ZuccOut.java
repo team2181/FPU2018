@@ -44,7 +44,7 @@ public class ZuccOut extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.zucc.spinControl.set(double -.5);
+    	Robot.zucc.setSpin(-0.7);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -56,6 +56,7 @@ public class ZuccOut extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
+    	Robot.zucc.setSpin(0.0);
     }
 
     // Called when another command which requires one or more of the same

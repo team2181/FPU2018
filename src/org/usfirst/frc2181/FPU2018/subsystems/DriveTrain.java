@@ -102,6 +102,8 @@ public class DriveTrain extends PIDSubsystem {
     		return leftEncoder.getDistance(); // distance driven
     	} else if (mode == "turn") { // turning
     		return gyro.getAngle()-lastGyro; // angle turned since start of turn
+    	} else if (mode == "ultrasonic") {
+    		return ultrasonic.getRangeInches();
     	}
 
         //return num;
@@ -117,6 +119,8 @@ public class DriveTrain extends PIDSubsystem {
     		driveAuto(output, 0.0);
     	} else if (mode == "turn") {
     		driveAuto(0.0, output);
+    	} else if (mode == "ultrasonic") {
+    		driveAuto(-output, 0.0);
     	}
     	SmartDashboard.putNumber("output", -output);
     	SmartDashboard.putNumber("think", num);
@@ -131,16 +135,23 @@ public class DriveTrain extends PIDSubsystem {
     public void drive(Joystick j) {
     	double spd = j.getRawAxis(1);
     	double rot = j.getRawAxis(4);
-    	SmartDashboard.putNumber("Gyro", gyro.getAngle());
     	driveAuto(spd, rot);
     }
     
     public void driveAuto(double spd, double rot) {
+    	SmartDashboard.putNumber("Left Encoder", leftEncoder.getDistance());
+    	SmartDashboard.putNumber("Gyro", gyro.getAngle());
     	diffDrive.arcadeDrive(spd, rot);
     }
     
     public void setMode(String s) {
     	mode = s;
+    	if (s == "drive") {
+    		leftEncoder.reset();
+    		rightEncoder.reset();
+    	} else if (s == "angle") {
+    		lastGyro = gyro.getAngle();
+    	}
     }
     
     public double getGyro() {

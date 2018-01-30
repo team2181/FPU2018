@@ -131,8 +131,8 @@ public class Robot extends TimedRobot {
         //autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
         //if (autonomousCommand != null) autonomousCommand.start();
-    	driveTrain.setSetpoint(320.0);
-    	driveTrain.enable();
+    	//driveTrain.setSetpoint(320.0);
+    	//driveTrain.enable();
     }
 
     /**

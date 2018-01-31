@@ -64,7 +64,7 @@ public class Zucc extends Subsystem {
     }
     
     public void setSpin(double v) {
-    	spinControl.set(double v);
+    	spinControl.set(v); 
     }
     
 }

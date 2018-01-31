@@ -104,6 +104,8 @@ public class DriveTrain extends PIDSubsystem {
     		return gyro.getAngle()-lastGyro; // angle turned since start of turn
     	} else if (mode == "ultrasonic") {
     		return ultrasonic.getRangeInches();
+    	} else {
+    		return 0;
     	}
 
         //return num;
@@ -156,5 +158,9 @@ public class DriveTrain extends PIDSubsystem {
     
     public double getGyro() {
     	return gyro.getAngle();
+    }
+    
+    public void setDriveMode(boolean lowTorq) {
+    	gearShift.set(lowTorq);
     }
 }

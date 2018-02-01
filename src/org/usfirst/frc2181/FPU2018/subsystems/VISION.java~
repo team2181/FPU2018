@@ -54,6 +54,14 @@ public class VISION extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+    public void setLights(boolean state) {
+    	if (state) {
+    		lights.set(Relay.Value.kOn);
+    	} else {
+    		lights.set(Relay.Value.kOff);
+    	}
+    	
+    }
 
 }
 

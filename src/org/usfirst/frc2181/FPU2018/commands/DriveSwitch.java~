@@ -43,7 +43,7 @@ public class DriveSwitch extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	gearShift.set(true);
+    	Robot.driveTrain.setDriveMode(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()

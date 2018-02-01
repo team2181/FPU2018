@@ -124,8 +124,8 @@ public class DriveTrain extends PIDSubsystem {
     	} else if (mode == "ultrasonic") {
     		driveAuto(-output, 0.0);
     	}
-    	SmartDashboard.putNumber("output", -output);
-    	SmartDashboard.putNumber("think", num);
+    	SmartDashboard.putNumber("PID Output", -output);
+    	SmartDashboard.putNumber("Test Vision Val", num);
 
 
     }
@@ -144,6 +144,7 @@ public class DriveTrain extends PIDSubsystem {
     	SmartDashboard.putNumber("Left Encoder", leftEncoder.getDistance());
     	SmartDashboard.putNumber("Right Encoder", rightEncoder.getDistance());
     	SmartDashboard.putNumber("Gyro", gyro.getAngle());
+    	SmartDashboard.putNumber("Ultrasonic", ultrasonic.getRangeInches());
     	diffDrive.arcadeDrive(spd, rot);
     }
     
@@ -163,5 +164,6 @@ public class DriveTrain extends PIDSubsystem {
     
     public void setDriveMode(boolean lowTorq) {
     	gearShift.set(lowTorq);
+    	SmartDashboard.putBoolean("High V & Low T", gearShift.get());
     }
 }

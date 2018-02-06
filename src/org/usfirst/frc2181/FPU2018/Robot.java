@@ -70,7 +70,6 @@ public class Robot extends TimedRobot {
         flippyDoo = new FlippyDoo();
         zucc = new Zucc();
         driveTrain = new DriveTrain();
-        SmartDashboard.putData(driveTrain);
         vISION = new VISION();
         lift = new Lift();
 
@@ -149,7 +148,7 @@ public class Robot extends TimedRobot {
 //        driveTrain.setSpot(avg);
 //        //double turn = avg - (IMG_WIDTH / 2);
 //        //driveTrain.driveAuto(0, -turn*0.1/10);
-//        SmartDashboard.putNumber("Vision Xpos", avg);
+//        SmartDashboard.putNumber("Vision XPos", avg);
 //        //Scheduler.getInstance().run();
     }
 

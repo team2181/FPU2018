@@ -38,7 +38,7 @@ public class ZuccDefault extends InstantCommand {
     // Called once when this command runs
     @Override
     protected void initialize() {
-    	//zuccMotors.stop() or something
+    	zuccMotors.stop();
     }
 
 }

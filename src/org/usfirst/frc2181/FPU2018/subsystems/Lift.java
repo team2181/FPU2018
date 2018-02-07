@@ -98,6 +98,11 @@ public class Lift extends PIDSubsystem {
     public void setLock(boolean locked) {
     	locking.set(locked); 
     }
+    
+    public void setMotors(double zuccForce) {
+    	motors.set(zuccForce);
+    }
+    
     public void goTo(int height) {
     	if (height == 0) {
     		setSetpoint(LOW);

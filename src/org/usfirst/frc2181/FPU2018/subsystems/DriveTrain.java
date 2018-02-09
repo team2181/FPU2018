@@ -31,6 +31,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
+import java.lang.Math;
 
 /**
  *
@@ -80,10 +81,7 @@ public class DriveTrain extends PIDSubsystem {
         // enable() - Enables the PID controller.
         lastGyro = gyro.getAngle();
         
-        leftMotor.configOpenloopRamp(2.0,10);
-        leftMotor2.configOpenloopRamp(2.0,10);
-        rightMotor.configOpenloopRamp(2.0,10);
-        rightMotor2.configOpenloopRamp(2.0,10);
+        setRamping(1.5);
     }
 
     @Override
@@ -143,8 +141,15 @@ public class DriveTrain extends PIDSubsystem {
     }
     
     public void drive(Joystick j) {
-    	double spd = .5 * j.getRawAxis(1);
-    	double rot = .5 * j.getRawAxis(4);
+    	double spd = .7 * j.getRawAxis(1);
+    	double rot = -1 * j.getRawAxis(4);
+    	double ramp = 1.5;
+    	if (rot == 0 && spd == 0) {
+    		ramp = 1.5;
+    	} else {
+    		ramp = 0.5+Math.abs(spd)/(Math.abs(spd)+Math.abs(rot));
+    	}
+    	setRamping(ramp);
     	driveAuto(spd, rot);
     	}
     
@@ -172,5 +177,12 @@ public class DriveTrain extends PIDSubsystem {
     public void setDriveMode(boolean lowTorq) {
     	gearShift.set(lowTorq);
     	SmartDashboard.putBoolean("High V & Low T", gearShift.get());
+    }
+    
+    public void setRamping(double time) {
+    	leftMotor.configOpenloopRamp(time,10);
+        leftMotor2.configOpenloopRamp(time,10);
+        rightMotor.configOpenloopRamp(time,10);
+        rightMotor2.configOpenloopRamp(time,10);
     }
 }

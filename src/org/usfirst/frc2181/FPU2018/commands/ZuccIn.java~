@@ -44,9 +44,10 @@ public class ZuccIn extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.zucc.setSpin(0.7);
-    	if (Robot.zucc.getLimit() == true) {
+    	if (Robot.zucc.getLimit() == true) { //Cube is in the Zucc
     		Robot.zucc.setSpin(0.0);
+    	} else { //Cube is not in the Zucc
+    		Robot.zucc.setSpin(0.7);
     	}
     }
 

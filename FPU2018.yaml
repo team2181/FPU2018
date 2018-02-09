@@ -396,7 +396,7 @@ Children:
         validators: null
         value: []
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: VISIONDefault}
+        name: Default Command, type: Command, validators: null, value: None}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
         default: []
         name: Constants
@@ -729,10 +729,20 @@ Children:
           value: whileHeld
       Base: Joystick Button
       Name: ZuccOutBtn
+    Properties:
+      Number: !!robotbuilder.data.properties.ChoicesProperty
+        choices: &id021 ['0', '1', '2', '3', '4', '5']
+        default: 1
+        name: Number
+        validators: &id022 [Joystick]
+        value: '0'
+    Base: Joystick
+    Name: Joystick
+  - Children:
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: Joystick}
+          name: Joystick, validators: null, value: LockingTrigger}
         Parameters: !!robotbuilder.data.properties.ParametersProperty
           default: []
           name: Parameters
@@ -743,7 +753,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '7'
+          value: '1'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -757,16 +767,16 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: LockItDown
+      Name: EndLock
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: ['0', '1', '2', '3', '4', '5']
+        choices: *id021
         default: 1
         name: Number
-        validators: [Joystick]
-        value: '0'
+        validators: *id022
+        value: '1'
     Base: Joystick
-    Name: Joystick
+    Name: LockingTrigger
   Properties: {}
   Base: OI
   Name: Operator Interface
@@ -856,7 +866,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: &id021 [List]
+        validators: &id023 [List]
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
@@ -881,7 +891,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: *id021
+        validators: *id023
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
@@ -906,7 +916,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: *id021
+        validators: *id023
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
@@ -1022,28 +1032,6 @@ Children:
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: VISCubeGrab
-  - Children: []
-    Properties:
-      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Autonomous Selection, validators: null, value: false}
-      Parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Parameters
-        validators: null
-        value: []
-      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Run When Disabled, validators: null, value: false}
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: VISION}
-      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
-        name: Parameter presets
-        validators: null
-        value: []
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: false}
-    Base: Instant Command
-    Name: VISIONDefault
   - Children: []
     Properties:
       Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
@@ -1226,7 +1214,7 @@ Children:
         name: Autonomous Selection, validators: null, value: false}
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default:
-        - &id022 !!robotbuilder.data.properties.ParameterDescriptor {name: setpoint,
+        - &id024 !!robotbuilder.data.properties.ParameterDescriptor {name: setpoint,
           type: double}
         name: Parameters
         validators: null
@@ -1236,7 +1224,7 @@ Children:
         componentName: PID Subsystem
         default: None
         name: Requires
-        validators: &id023 [TypeDropdownSelected]
+        validators: &id025 [TypeDropdownSelected]
         value: DriveTrain
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
         default: []
@@ -1253,7 +1241,7 @@ Children:
         name: Autonomous Selection, validators: null, value: false}
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default:
-        - *id022
+        - *id024
         name: Parameters
         validators: null
         value:
@@ -1262,7 +1250,7 @@ Children:
         componentName: PID Subsystem
         default: None
         name: Requires
-        validators: *id023
+        validators: *id025
         value: DriveTrain
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
         default: []

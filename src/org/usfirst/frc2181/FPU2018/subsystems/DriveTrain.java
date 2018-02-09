@@ -163,10 +163,14 @@ public class DriveTrain extends PIDSubsystem {
     public void setMode(String s) {
     	mode = s;
     	if (s == "drive") {
+    		getPIDController().setPID(.002, .0004, 0); //need to figure out driving pid numbers
     		leftEncoder.reset();
     		rightEncoder.reset();
     	} else if (s == "angle") {
+    		getPIDController().setPID(.002, .0004, 0); //need to figure out turning pid numbers
     		lastGyro = gyro.getAngle();
+    	} else if (s == "ultrasonic") {
+    		getPIDController().setPID(.002, .0004, 0); //need to figure out ultrasonic pid numbers
     	}
     }
     

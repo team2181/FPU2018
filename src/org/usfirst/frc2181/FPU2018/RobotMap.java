@@ -68,7 +68,7 @@ public class RobotMap {
         flippyDooPusher = new Solenoid(1, 2);
         LiveWindow.addActuator("FlippyDoo", "Pusher", flippyDooPusher);
         
-        zuccSpinStop = new DigitalInput(0);
+        zuccSpinStop = new DigitalInput(4);
         LiveWindow.addSensor("Zucc", "SpinStop", zuccSpinStop);
         
         zuccLeftSpinner = new WPI_TalonSRX(9);
@@ -104,11 +104,11 @@ public class RobotMap {
         driveTrainDiffDrive.setExpiration(0.1);
         driveTrainDiffDrive.setMaxOutput(1.0);
 
-        driveTrainLeftEncoder = new Encoder(1, 2, false, EncodingType.k4X);
+        driveTrainLeftEncoder = new Encoder(2, 3, false, EncodingType.k4X);
         LiveWindow.addSensor("DriveTrain", "LeftEncoder", driveTrainLeftEncoder);
         driveTrainLeftEncoder.setDistancePerPulse(0.05236);
         driveTrainLeftEncoder.setPIDSourceType(PIDSourceType.kRate);
-        driveTrainRightEncoder = new Encoder(5, 4, false, EncodingType.k4X);
+        driveTrainRightEncoder = new Encoder(1, 0, false, EncodingType.k4X);
         LiveWindow.addSensor("DriveTrain", "RightEncoder", driveTrainRightEncoder);
         driveTrainRightEncoder.setDistancePerPulse(0.05236);
         driveTrainRightEncoder.setPIDSourceType(PIDSourceType.kRate);
@@ -124,7 +124,7 @@ public class RobotMap {
         liftLocking = new Solenoid(1, 1);
         LiveWindow.addActuator("Lift", "Locking", liftLocking);
         
-        liftHeightEncoder = new Encoder(3, 8, false, EncodingType.k4X);
+        liftHeightEncoder = new Encoder(9, 10, false, EncodingType.k4X);
         LiveWindow.addSensor("Lift", "HeightEncoder", liftHeightEncoder);
         liftHeightEncoder.setDistancePerPulse(1.0);
         liftHeightEncoder.setPIDSourceType(PIDSourceType.kRate);

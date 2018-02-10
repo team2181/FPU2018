@@ -127,9 +127,9 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
-        //autonomousCommand = chooser.getSelected();
+        autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
-        //if (autonomousCommand != null) autonomousCommand.start();
+        if (autonomousCommand != null) autonomousCommand.start();
     	//driveTrain.setSetpoint(320.0);
     	//driveTrain.enable();
     }
@@ -149,9 +149,9 @@ public class Robot extends TimedRobot {
 //        //double turn = avg - (IMG_WIDTH / 2);
 //        //driveTrain.driveAuto(0, -turn*0.1/10);
 //        SmartDashboard.putNumber("Vision XPos", avg);
-//        //Scheduler.getInstance().run();
-    	double val = SmartDashboard.getNumber("pos", 0);
-    	SmartDashboard.putNumber("pos2", 2.0*val);
+        Scheduler.getInstance().run();
+    	//double val = SmartDashboard.getNumber("pos", 0);
+    	//SmartDashboard.putNumber("pos2", 2.0*val);
     }
 
     @Override

@@ -108,10 +108,10 @@ public class DriveTrain extends PIDSubsystem {
     		return gyro.getAngle()-lastGyro; // angle turned since start of turn
     	} else if (mode == "ultrasonic") {
     		return ultrasonic.getRangeInches();
-    	} else if {
+    	} else if (mode == "vision") {
     		return SmartDashboard.getNumber("pos", 0);
     	} else {
-    		return 0;
+    		return 0.0;
     	}
 
         //return num;
@@ -159,6 +159,7 @@ public class DriveTrain extends PIDSubsystem {
     	SmartDashboard.putNumber("Left Encoder", leftEncoder.getDistance());
     	SmartDashboard.putNumber("Right Encoder", rightEncoder.getDistance());
     	SmartDashboard.putNumber("Gyro", gyro.getAngle());
+    	SmartDashboard.putNumber("Ultrasonic", ultrasonic.getRangeInches());
     	diffDrive.arcadeDrive(spd, rot);
     }
     

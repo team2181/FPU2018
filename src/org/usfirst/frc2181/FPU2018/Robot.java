@@ -150,6 +150,8 @@ public class Robot extends TimedRobot {
 //        //driveTrain.driveAuto(0, -turn*0.1/10);
 //        SmartDashboard.putNumber("Vision XPos", avg);
 //        //Scheduler.getInstance().run();
+    	double val = SmartDashboard.getNumber("pos", 0);
+    	SmartDashboard.putNumber("pos2", 2.0*val);
     }
 
     @Override

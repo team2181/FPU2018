@@ -115,8 +115,6 @@ public class DriveTrain extends PIDSubsystem {
     	}
 
         //return num;
-
-
     }
 
     @Override
@@ -135,8 +133,6 @@ public class DriveTrain extends PIDSubsystem {
 
 
     }
-    
-
     
     public void setSpot(double spot) {
     	num = spot;

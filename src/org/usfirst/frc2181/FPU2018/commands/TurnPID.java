@@ -67,6 +67,7 @@ public class TurnPID extends Command {
     @Override
     protected void end() {
     	Robot.driveTrain.disable();
+    	Robot.driveTrain.driveAuto(0,0);
     }
 
     // Called when another command which requires one or more of the same

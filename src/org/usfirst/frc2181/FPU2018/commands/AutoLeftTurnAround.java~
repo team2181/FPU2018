@@ -45,10 +45,6 @@ public class AutoLeftTurnAround extends Command {
     @Override
     protected void execute() {
     	Robot.driveTrain.driveAuto(.7,.7);
-//    	Drive forward and turn right until 180 deg. gyro change
-//    	Drive forward 75? in.
-//    	Turn 90 deg.
-//    	Activate vision cube grab and make sure to reset gyro and encoder values
     }
 
     // Make this return true when this Command no longer needs to run execute()

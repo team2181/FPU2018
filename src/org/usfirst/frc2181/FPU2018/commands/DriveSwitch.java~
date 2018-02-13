@@ -12,6 +12,7 @@
 package org.usfirst.frc2181.FPU2018.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2181.FPU2018.Robot;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
 /**
  *
@@ -38,6 +39,7 @@ public class DriveSwitch extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+    	SmartDashboard.putString("drive mode change", "activated");
     }
 
     // Called repeatedly when this Command is scheduled to run

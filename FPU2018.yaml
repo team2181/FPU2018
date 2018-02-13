@@ -48,7 +48,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: [DigitalChannel]
-          value: '0'
+          value: '4'
       Base: Limit Switch
       Name: SpinStop
     - Children:
@@ -228,7 +228,7 @@ Children:
           default: '0'
           name: Channel A Channel (Digital)
           validators: &id007 [DigitalChannel]
-          value: '1'
+          value: '2'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
           name: Distance Per Pulse, validators: null, value: 0.05236}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
@@ -252,7 +252,7 @@ Children:
           default: '0'
           name: Channel B Channel (Digital)
           validators: &id011 [DigitalChannel]
-          value: '2'
+          value: '3'
       Base: Quadrature Encoder
       Name: LeftEncoder
     - Children: []
@@ -262,7 +262,7 @@ Children:
           default: '0'
           name: Channel A Channel (Digital)
           validators: *id007
-          value: '5'
+          value: '1'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
           name: Distance Per Pulse, validators: null, value: 0.05236}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
@@ -284,7 +284,7 @@ Children:
           default: '0'
           name: Channel B Channel (Digital)
           validators: *id011
-          value: '4'
+          value: '0'
       Base: Quadrature Encoder
       Name: RightEncoder
     - Children: []
@@ -428,7 +428,7 @@ Children:
           default: '0'
           name: Channel A Channel (Digital)
           validators: *id007
-          value: '3'
+          value: '9'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
           name: Distance Per Pulse, validators: null, value: 1.0}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
@@ -1221,9 +1221,8 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Abi
-      Chiaokhiao\workspace', extension: null, folder: true, name: Eclipse Workspace,
-    validators: null, value: ..\}
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\jpiv1\workspace',
+    extension: null, folder: true, name: Eclipse Workspace, validators: null, value: ..\}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
   Autonomous command parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -1241,9 +1240,9 @@ Properties:
     name: Export Subsystems, validators: null, value: true}
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
-  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Abi
-      Chiaokhiao\', extension: null, folder: true, name: Wiring file location, validators: null,
-    value: 'C:\Users\Abi Chiaokhiao\'}
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\jpiv1\',
+    extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\Users\Abi
+      Chiaokhiao\'}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
 Base: Robot

@@ -126,15 +126,12 @@ public class DriveTrain extends PIDSubsystem {
         // e.g. yourMotor.set(output);
     	if (mode == "drive") {
     		driveAuto(-output, 0.0);
-    	} else if (mode == "turn" || mode == "vision") {
-    		if (output<0 && output > -.2) {
-    			output = -.2;
-    		} else if (output>0 && output < .2) {
-    			output = .2;
-    		}
-    		driveAuto(0.0, -output);
+    	} else if (mode == "turn") {
+    		driveAuto(0.0, -0.7*output/Math.abs(output));
     	} else if (mode == "ultrasonic") {
     		driveAuto(0.5, 0.0);
+    	} else if (mode == "vision") {
+    		driveAuto(0.0, -output);
     	}
     	SmartDashboard.putNumber("PID Output", -output);
     	SmartDashboard.putNumber("Test Vision Val", num);
@@ -207,5 +204,9 @@ public class DriveTrain extends PIDSubsystem {
     
     public double getUltra() {
     	return ultrasonic.getRangeInches();
+    }
+    
+    public double getLastGyro() {
+    	return lastGyro;
     }
 }

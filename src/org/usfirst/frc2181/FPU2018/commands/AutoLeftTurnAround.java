@@ -44,13 +44,13 @@ public class AutoLeftTurnAround extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.driveTrain.driveAuto(.7,.7);
+    	Robot.driveTrain.driveAuto(-.7,-.7);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return (val+160.0)<Robot.driveTrain.getGyro();
+        return (val+170.0)<Robot.driveTrain.getGyro();
     }
 
     // Called once after isFinished returns true

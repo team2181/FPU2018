@@ -125,7 +125,7 @@ public class DriveTrain extends PIDSubsystem {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
     	if (mode == "drive") {
-    		driveAuto(-output, 0.0);
+    		driveAuto(-0.7*output/Math.abs(output), 0.0);
     	} else if (mode == "turn") {
     		driveAuto(0.0, -0.7*output/Math.abs(output));
     	} else if (mode == "ultrasonic") {
@@ -137,6 +137,10 @@ public class DriveTrain extends PIDSubsystem {
     	SmartDashboard.putNumber("Test Vision Val", num);
 
 
+    }
+    
+    public double getEncoder() {
+    	return leftEncoder.getDistance();
     }
     
     public void setSpot(double spot) {

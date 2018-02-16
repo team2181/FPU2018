@@ -57,7 +57,7 @@ public class TurnPID extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return Robot.driveTrain.onTarget() || Math.abs(Robot.driveTrain.getGyro()-Robot.driveTrain.getLasyGyro())>Math.abs(m_setpoint);
+        return Robot.driveTrain.onTarget() || Math.abs(Robot.driveTrain.getGyro()-Robot.driveTrain.getLastGyro())>Math.abs(m_setpoint);
     }
 
     // Called once after isFinished returns true

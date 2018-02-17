@@ -77,8 +77,8 @@ public class OI {
         zuccOutBtn.whileHeld(new ZuccOut());
         zuccInBtn = new JoystickButton(joystick, 3);
         zuccInBtn.whileHeld(new ZuccIn());
-        liftDownBtn = new JoystickButton(joystick, 6);
-        liftDownBtn.whileHeld(new LiftDown());
+//        liftDownBtn = new JoystickButton(joystick, 6);
+//        liftDownBtn.whileHeld(new LiftDown());
         liftUpBtn = new JoystickButton(joystick, 5);
         liftUpBtn.whileHeld(new LiftUp());
         cubeFlip = new JoystickButton(joystick, 1);

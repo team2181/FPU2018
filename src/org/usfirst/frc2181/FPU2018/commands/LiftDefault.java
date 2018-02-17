@@ -38,11 +38,15 @@ public class LiftDefault extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+    	double leftTrigger = Robot.oi.getRawAxis(2);
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+    	if(leftTrigger > 0) {
+    		Robot.liftDown();
+    	} else {
     	Robot.lift.setMotors(0);
     }
 

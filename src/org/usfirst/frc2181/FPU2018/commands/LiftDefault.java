@@ -44,7 +44,7 @@ public class LiftDefault extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	if(leftTrigger > 0) {
+    	if(leftTrigger > 0.8) {
     		Robot.liftDown();
     	} else {
     	Robot.lift.setMotors(0);

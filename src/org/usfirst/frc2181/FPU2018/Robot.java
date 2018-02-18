@@ -21,12 +21,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.VisionThread;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Joystick;
 
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc2181.FPU2018.MyPipeline;
 import org.usfirst.frc2181.FPU2018.commands.*;
 import org.usfirst.frc2181.FPU2018.subsystems.*;
+import org.usfirst.frc2181.FPU2018.Robot.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -170,6 +172,14 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        
+        double xleftTrigger = new Joystick(0).getRawAxis(2);
+        System.out.println(xleftTrigger);
+        if (xleftTrigger > 0.8) {
+        	Robot.lift.setMotors(-.5);
+        }else {
+        	Robot.lift.setMotors(0.0);
+        	}
     }
     
 }

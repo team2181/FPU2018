@@ -32,10 +32,10 @@ public class AutoLeft extends CommandGroup {
 //    	offSeasonNetworkTable.startClient("10.0.100.5");
 //    	gameData = offSeasonNetworkTable.getTable("OffseasonFMSInfo").getEntry("GameData").getString("defaultValue");
     	addSequential(new DrivePID(-12)); // in inches // start backwards
-    	addSequential(new TurnPID(37.22)); // in degrees
+    	//addSequential(new TurnPID(37.22)); // in degrees
     	addSequential(new DrivePID(-45.15));
-    	addSequential(new TurnPID(-35.22));
-    	addSequential(new UltraSonicPID());
+    	//addSequential(new TurnPID(-35.22));
+    	//addSequential(new UltraSonicPID());
 //		if(gameData.charAt(0) == 'L')
 //		{
 //			addSequential(new FlipOff());

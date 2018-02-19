@@ -790,7 +790,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '3'
+          value: '2'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -804,7 +804,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: XButton
+      Name: AButton
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -819,7 +819,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '3'
+          value: '2'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -833,7 +833,7 @@ Children:
           validators: null
           value: whenReleased
       Base: Joystick Button
-      Name: NoXButton
+      Name: NoAButton
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: &id024 ['0', '1', '2', '3', '4', '5']
@@ -1358,10 +1358,10 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: None}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id029 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id029
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
@@ -1380,10 +1380,10 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: None}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id030 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id030
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command

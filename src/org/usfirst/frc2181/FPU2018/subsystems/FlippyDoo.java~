@@ -57,6 +57,7 @@ public class FlippyDoo extends Subsystem {
     // here. Call these from Commands.
     public void setPusher(boolean on) {
     	pusher.set(on);
+    	SmartDashboard.putBoolean("flippydoo", on);
     }
 
 }

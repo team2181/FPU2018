@@ -11,6 +11,8 @@
 
 package org.usfirst.frc2181.FPU2018.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc2181.FPU2018.Robot;
 
 /**
@@ -38,13 +40,15 @@ public class FlipOff extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+    	ticks = 0;
+    	Robot.flippyDoo.setPusher(true);
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.flippyDoo.setPusher(true);
-    	ticks = 0;
+    	//Robot.flippyDoo.setPusher(true);
+    	ticks = ticks+1;
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -56,12 +60,14 @@ public class FlipOff extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-    	Robot.flippyDoo.setPusher(false);
+    	//Robot.flippyDoo.setPusher(false);
+    	SmartDashboard.putString("done with flip","yes");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+    	//Robot.flippyDoo.setPusher(false);
     }
 }

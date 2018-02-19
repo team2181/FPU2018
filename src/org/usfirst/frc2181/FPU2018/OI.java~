@@ -94,8 +94,8 @@ public class OI {
         liftDownBtn.whileHeld(new LiftDown());
         liftUpBtn = new JoystickButton(joystick, 6);
         liftUpBtn.whileHeld(new LiftUp());
-        //cubeFlip = new JoystickButton(joystick, 1);
-        //cubeFlip.whenPressed(new FlipOff());
+        cubeFlip = new JoystickButton(joystick, 1);
+        cubeFlip.whenPressed(new FlipOff());
         driveMode = new JoystickButton(joystick, 1);
         driveMode.whileHeld(new DriveSwitch());
 

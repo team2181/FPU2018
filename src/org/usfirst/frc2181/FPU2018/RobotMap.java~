@@ -45,16 +45,14 @@ public class RobotMap {
     public static SpeedController zuccRightMotor;
     public static SpeedControllerGroup zuccSpinControl;
     public static WPI_TalonSRX driveTrainLeftMotor;
-    public static WPI_TalonSRX driveTrainLeftMotor2;
-    public static SpeedControllerGroup driveTrainLeftMotors;
     public static WPI_TalonSRX driveTrainRightMotor;
-    public static WPI_TalonSRX driveTrainRightMotor2;
-    public static SpeedControllerGroup driveTrainRightMotors;
     public static DifferentialDrive driveTrainDiffDrive;
     public static Encoder driveTrainLeftEncoder;
     public static Encoder driveTrainRightEncoder;
     public static Solenoid driveTrainGearShift;
     public static Ultrasonic driveTrainUltrasonic;
+    public static WPI_TalonSRX driveTrainLeftMotor2;
+    public static WPI_TalonSRX driveTrainRightMotor2;
     public static Relay vISIONLights;
     public static Solenoid liftLocking;
     public static Encoder liftHeightEncoder;
@@ -85,22 +83,10 @@ public class RobotMap {
         driveTrainLeftMotor = new WPI_TalonSRX(3);
         
         
-        driveTrainLeftMotor2 = new WPI_TalonSRX(4);
-        
-        
-        driveTrainLeftMotors = new SpeedControllerGroup(driveTrainLeftMotor, driveTrainLeftMotor2  );
-        LiveWindow.addActuator("DriveTrain", "LeftMotors", driveTrainLeftMotors);
-        
         driveTrainRightMotor = new WPI_TalonSRX(5);
         
         
-        driveTrainRightMotor2 = new WPI_TalonSRX(6);
-        
-        
-        driveTrainRightMotors = new SpeedControllerGroup(driveTrainRightMotor, driveTrainRightMotor2  );
-        LiveWindow.addActuator("DriveTrain", "RightMotors", driveTrainRightMotors);
-        
-        driveTrainDiffDrive = new DifferentialDrive(driveTrainLeftMotors, driveTrainRightMotors);
+        driveTrainDiffDrive = new DifferentialDrive(driveTrainLeftMotor, driveTrainRightMotor);
         LiveWindow.addActuator("DriveTrain", "DiffDrive", driveTrainDiffDrive);
         driveTrainDiffDrive.setSafetyEnabled(true);
         driveTrainDiffDrive.setExpiration(0.1);
@@ -119,6 +105,12 @@ public class RobotMap {
         
         driveTrainUltrasonic = new Ultrasonic(7, 6);
         LiveWindow.addSensor("DriveTrain", "Ultrasonic", driveTrainUltrasonic);
+        
+        driveTrainLeftMotor2 = new WPI_TalonSRX(4);
+        
+        
+        driveTrainRightMotor2 = new WPI_TalonSRX(6);
+        
         
         vISIONLights = new Relay(0);
         LiveWindow.addActuator("VISION", "Lights", vISIONLights);

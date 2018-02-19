@@ -172,14 +172,6 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        
-        double xleftTrigger = new Joystick(0).getRawAxis(2);
-        System.out.println(xleftTrigger);
-        if (xleftTrigger > 0.8) {
-        	Robot.lift.setMotors(-.5);
-        }else {
-        	Robot.lift.setMotors(0.0);
-        	}
     }
     
 }

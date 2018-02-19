@@ -40,7 +40,7 @@ public class LiftDefault extends Command {
     //double leftTrigger;
     @Override
     protected void initialize() {
-    	joy = Robot.oi.getJoystick()
+    	joy = Robot.oi.getJoystick();
     }
 
     // Called repeatedly when this Command is scheduled to run

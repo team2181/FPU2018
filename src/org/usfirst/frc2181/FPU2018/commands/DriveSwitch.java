@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2181.FPU2018.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc2181.FPU2018.RobotMap;
 import org.usfirst.frc2181.FPU2018.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 
@@ -39,12 +40,16 @@ public class DriveSwitch extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+    	Robot.driveTrain.setDriveMode(true);
     	SmartDashboard.putString("drive mode change", "activated");
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+    	if ((RobotMap.pressureGauge.getVoltage()-.5)*50 < 40) {
+    		Robot.driveTrain.setDriveMode(true);
+    	}
     	Robot.driveTrain.setDriveMode(true);
     }
 
@@ -57,6 +62,7 @@ public class DriveSwitch extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
+    	SmartDashboard.putString("drive mode change", "deactivated");
     	Robot.driveTrain.setDriveMode(false);
     }
 
@@ -64,5 +70,7 @@ public class DriveSwitch extends Command {
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+    	SmartDashboard.putString("drive mode change", "deactivated");
+    	Robot.driveTrain.setDriveMode(false);
     }
 }

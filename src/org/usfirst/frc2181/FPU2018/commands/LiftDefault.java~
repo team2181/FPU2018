@@ -47,12 +47,7 @@ public class LiftDefault extends Command {
     @Override
     protected void execute() {
         //System.out.println(xleftTrigger);
-    	double val = joy.getRawAxis(2);
-        if (val > 0.8) {
-        	Robot.lift.setMotors(-.5);
-        } else {
-        	Robot.lift.setMotors(0.0);
-        }
+    	Robot.lift.setMotors(0.0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

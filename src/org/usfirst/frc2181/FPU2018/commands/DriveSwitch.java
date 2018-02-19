@@ -40,17 +40,18 @@ public class DriveSwitch extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	Robot.driveTrain.setDriveMode(true);
+    	SmartDashboard.putNumber("pressure", (RobotMap.pressureGauge.getVoltage()-.5)*50+5);
+    	if ((RobotMap.pressureGauge.getVoltage()-.5)*50+5 > 40) {
+    		Robot.driveTrain.setDriveMode(true);
+    	}
     	SmartDashboard.putString("drive mode change", "activated");
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	if ((RobotMap.pressureGauge.getVoltage()-.5)*50 < 40) {
-    		Robot.driveTrain.setDriveMode(true);
-    	}
-    	Robot.driveTrain.setDriveMode(true);
+    	
+    	//Robot.driveTrain.setDriveMode(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()

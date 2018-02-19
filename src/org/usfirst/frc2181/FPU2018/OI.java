@@ -60,8 +60,8 @@ public class OI {
     public JoystickButton zuccInBtn;
     public JoystickButton zuccOutBtn;
     public JoystickButton noLeftBumper;
-    public JoystickButton aButton;
-    public JoystickButton noAButton;
+    public JoystickButton bButton;
+    public JoystickButton noBButton;
     public JoystickButton noRightBumper;
     public Joystick joystick;
     public JoystickButton endLock;
@@ -80,10 +80,10 @@ public class OI {
         
         noRightBumper = new JoystickButton(joystick, 6);
         noRightBumper.whileHeld(new LiftDefault());
-        noAButton = new JoystickButton(joystick, 2);
-        noAButton.whenReleased(new FlippyDoStop());
-        aButton = new JoystickButton(joystick, 2);
-        aButton.whileHeld(new FlippyDoUp());
+        noBButton = new JoystickButton(joystick, 2);
+        noBButton.whenReleased(new FlippyDoStop());
+        bButton = new JoystickButton(joystick, 2);
+        bButton.whileHeld(new FlippyDoUp());
         noLeftBumper = new JoystickButton(joystick, 5);
         noLeftBumper.whenReleased(new LiftDefault());
         zuccOutBtn = new JoystickButton(joystick, 4);
@@ -96,7 +96,7 @@ public class OI {
         liftUpBtn.whileHeld(new LiftUp());
         cubeFlip = new JoystickButton(joystick, 1);
         cubeFlip.whenPressed(new FlipOff());
-        driveMode = new JoystickButton(joystick, 2);
+        driveMode = new JoystickButton(joystick, 1);
         driveMode.whileHeld(new DriveSwitch());
 
 

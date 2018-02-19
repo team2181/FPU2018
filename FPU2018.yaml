@@ -312,13 +312,13 @@ Children:
           default: '0'
           name: Output Channel (Solenoid)
           validators: *id016
-          value: '0'
+          value: '2'
         Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id017
           default: '0'
           name: Output PCM (Solenoid)
           validators: *id018
-          value: '2'
+          value: '1'
       Base: Solenoid
       Name: GearShift
     - Children: []
@@ -430,13 +430,13 @@ Children:
           default: '0'
           name: Output Channel (Solenoid)
           validators: *id016
-          value: '1'
+          value: '0'
         Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id017
           default: '0'
           name: Output PCM (Solenoid)
           validators: *id018
-          value: '2'
+          value: '1'
       Base: Solenoid
       Name: Locking
     - Children: []
@@ -587,7 +587,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '2'
+          value: '1'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -804,7 +804,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: AButton
+      Name: BButton
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -833,7 +833,7 @@ Children:
           validators: null
           value: whenReleased
       Base: Joystick Button
-      Name: NoAButton
+      Name: NoBButton
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,

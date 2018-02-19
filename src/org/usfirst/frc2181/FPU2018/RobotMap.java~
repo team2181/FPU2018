@@ -114,7 +114,7 @@ public class RobotMap {
         LiveWindow.addSensor("DriveTrain", "RightEncoder", driveTrainRightEncoder);
         driveTrainRightEncoder.setDistancePerPulse(0.05236);
         driveTrainRightEncoder.setPIDSourceType(PIDSourceType.kRate);
-        driveTrainGearShift = new Solenoid(2, 0);
+        driveTrainGearShift = new Solenoid(1, 2);
         LiveWindow.addActuator("DriveTrain", "GearShift", driveTrainGearShift);
         
         driveTrainUltrasonic = new Ultrasonic(7, 6);
@@ -123,7 +123,7 @@ public class RobotMap {
         vISIONLights = new Relay(0);
         LiveWindow.addActuator("VISION", "Lights", vISIONLights);
         
-        liftLocking = new Solenoid(2, 1);
+        liftLocking = new Solenoid(1, 0);
         LiveWindow.addActuator("Lift", "Locking", liftLocking);
         
         liftHeightEncoder = new Encoder(9, 8, false, EncodingType.k4X);

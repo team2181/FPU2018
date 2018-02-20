@@ -103,7 +103,7 @@ public class RobotMap {
         driveTrainGearShift = new Solenoid(1, 2);
         LiveWindow.addActuator("DriveTrain", "GearShift", driveTrainGearShift);
         
-        driveTrainUltrasonic = new Ultrasonic(7, 6);
+        driveTrainUltrasonic = new Ultrasonic(9, 8);
         LiveWindow.addSensor("DriveTrain", "Ultrasonic", driveTrainUltrasonic);
         
         driveTrainLeftMotor2 = new WPI_TalonSRX(4);
@@ -118,7 +118,7 @@ public class RobotMap {
         liftLocking = new Solenoid(1, 0);
         LiveWindow.addActuator("Lift", "Locking", liftLocking);
         
-        liftHeightEncoder = new Encoder(9, 8, false, EncodingType.k4X);
+        liftHeightEncoder = new Encoder(5, 6, false, EncodingType.k4X);
         LiveWindow.addSensor("Lift", "HeightEncoder", liftHeightEncoder);
         liftHeightEncoder.setDistancePerPulse(1.0);
         liftHeightEncoder.setPIDSourceType(PIDSourceType.kRate);

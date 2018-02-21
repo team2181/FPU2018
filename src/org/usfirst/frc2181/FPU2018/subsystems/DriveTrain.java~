@@ -148,7 +148,7 @@ public class DriveTrain extends PIDSubsystem {
     }
     
     public void drive(Joystick j) {
-    	double spd = 0.8 * j.getRawAxis(1);
+    	double spd = -0.8 * j.getRawAxis(1);
     	double rot = -0.8 * j.getRawAxis(4);
     	double ramp = 1.5;
     	if (rot == 0 && spd == 0) {
@@ -212,5 +212,9 @@ public class DriveTrain extends PIDSubsystem {
     
     public double getLastGyro() {
     	return lastGyro;
+    }
+    
+    public void ResetGyro() {
+    	gyro.reset();
     }
 }

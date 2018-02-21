@@ -91,10 +91,10 @@ public class RobotMap {
         driveTrainLeftMotors = new SpeedControllerGroup(driveTrainLeftMotor, driveTrainLeftMotor2  );
         LiveWindow.addActuator("DriveTrain", "LeftMotors", driveTrainLeftMotors);
         
-        driveTrainRightMotor = new WPI_TalonSRX(5);
+        driveTrainRightMotor = new WPI_TalonSRX(1);
         
         
-        driveTrainRightMotor2 = new WPI_TalonSRX(6);
+        driveTrainRightMotor2 = new WPI_TalonSRX(2);
         
         
         driveTrainRightMotors = new SpeedControllerGroup(driveTrainRightMotor, driveTrainRightMotor2  );

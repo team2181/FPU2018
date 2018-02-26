@@ -39,6 +39,10 @@ import org.usfirst.frc2181.FPU2018.Robot.*;
  */
 public class Robot extends TimedRobot {
 
+	saveEncoder save = new saveEncoder();
+	double timeloop = 0;
+	double timenow = 0;
+	
     Command autonomousCommand;
     SendableChooser<Command> chooser = new SendableChooser<>();
     
@@ -159,6 +163,8 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
     	driveTrain.disable();
+    	save.startWrite("recent.csv");
+    	timenow = System.currentTimeMillis();
         // This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
@@ -172,6 +178,11 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        timeloop = System.currentTimeMillis();
+        save.writeInfo(RobotMap.driveTrainLeftMotor.getSelectedSensorPosition(0),
+        			   RobotMap.driveTrainLeftMotor.getSelectedSensorVelocity(0),
+        			   timeloop-timenow);
+        timenow = timeloop;
     }
     
 }

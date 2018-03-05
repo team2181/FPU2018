@@ -33,11 +33,25 @@ public class AutoLeft extends CommandGroup {
 //    	gameData = offSeasonNetworkTable.getTable("OffseasonFMSInfo").getEntry("GameData").getString("defaultValue");
     	addSequential(new DrivePID(-12)); // in inches // start backwards
     	addSequential(new TurnPID(37.22)); // in degrees
-    	addSequential(new DrivePID(-45.15));
+    	addSequential(new DrivePID(-45.15)); //probably should be like 120 later 
     	addSequential(new TurnPID(-35.22));
     	addSequential(new AutoFlippyDoUp(.5));
-    	//addSequential(new DrivePID(-12));
-    	//addSequential(new TurnPID(-75));
+		//if(gameData.charAt(0) == 'L')
+		//{
+			//addSequential(new AutoFlippyDoUp(.5))
+		//}
+    	
+    	//Here is some code that may work once the encoders and all that stuff work again
+    	//addSequential(new DrivePID(12));
+    	//addSequential(new TurnPID(75));
+    	//addSequential(new DrivePID(30));
+    	//addSequential(new TurnPID(75));
+    	//addSequential(new DrivePID(25);
+    	//if(gameData.CharAt(1) == "L") {
+    		//addSequential(new TurnPid(15));
+    		//addSeqential(new DrivePID(25));
+    		//addSequential(new 
+        //}
     	
     	//addSequential(new UltraSonicPID());
 //		if(gameData.charAt(0) == 'L')

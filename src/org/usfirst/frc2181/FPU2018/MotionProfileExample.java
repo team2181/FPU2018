@@ -49,6 +49,7 @@ public class MotionProfileExample {
 	 * motion profile.
 	 */
 	private WPI_TalonSRX _talon;
+	private WPI_TalonSRX _talon2;
 	/**
 	 * State machine to make sure we let enough of the motion profile stream to
 	 * talon before we fire it.
@@ -96,7 +97,7 @@ public class MotionProfileExample {
 	 * every 10ms.
 	 */
 	class PeriodicRunnable implements java.lang.Runnable {
-	    public void run() {  _talon.processMotionProfileBuffer();    }
+	    public void run() {  _talon.processMotionProfileBuffer(); _talon2.processMotionProfileBuffer();  }
 	}
 	Notifier _notifer = new Notifier(new PeriodicRunnable());
 	
@@ -107,13 +108,15 @@ public class MotionProfileExample {
 	 * @param talon
 	 *            reference to Talon object to fetch motion profile status from.
 	 */
-	public MotionProfileExample(WPI_TalonSRX talon) {
+	public MotionProfileExample(WPI_TalonSRX talon, WPI_TalonSRX talon2) {
 		_talon = talon;
+		_talon2 = talon2;
 		/*
 		 * since our MP is 10ms per point, set the control frame rate and the
 		 * notifer to half that
 		 */
 		_talon.changeMotionControlFramePeriod(5);
+		_talon2.changeMotionControlFramePeriod(5);
 		_notifer.startPeriodic(0.005);
 	}
 
@@ -128,6 +131,7 @@ public class MotionProfileExample {
 		 * sitting in memory.
 		 */
 		_talon.clearMotionProfileTrajectories();
+		_talon2.clearMotionProfileTrajectories();
 		/* When we do re-enter motionProfile control mode, stay disabled. */
 		_setValue = SetValueMotionProfile.Disable;
 		/* When we do start running our state machine start at the beginning. */
@@ -146,6 +150,7 @@ public class MotionProfileExample {
 	public void control() {
 		/* Get the motion profile status every loop */
 		_talon.getMotionProfileStatus(_status);
+		_talon2.getMotionProfileStatus(_status);
 
 		/*
 		 * track time, this is rudimentary but that's okay, we just want to make
@@ -235,6 +240,7 @@ public class MotionProfileExample {
 
 			/* Get the motion profile status every loop */
 			_talon.getMotionProfileStatus(_status);
+			_talon2.getMotionProfileStatus(_status);
 			_heading = _talon.getActiveTrajectoryHeading();
 			_pos = _talon.getActiveTrajectoryPosition();
 			_vel = _talon.getActiveTrajectoryVelocity();
@@ -264,10 +270,10 @@ public class MotionProfileExample {
 	/** Start filling the MPs to all of the involved Talons. */
 	private void startFilling() {
 		/* since this example only has one talon, just update that one */
-		startFilling(GeneratedMotionProfile.Points, GeneratedMotionProfile.kNumPoints);
+		startFilling(GeneratedMotionProfile.Points, GeneratedMotionProfile.Points2, GeneratedMotionProfile.kNumPoints);
 	}
 
-	private void startFilling(double[][] profile, int totalCnt) {
+	private void startFilling(double[][] profile, double[][] profile2, int totalCnt) {
 
 		/* create an empty point */
 		TrajectoryPoint point = new TrajectoryPoint();
@@ -311,6 +317,50 @@ public class MotionProfileExample {
 				point.isLastPoint = true; /* set this to true on the last point  */
 
 			_talon.pushMotionProfileTrajectory(point);
+		}
+		
+		/* create an empty point */
+		TrajectoryPoint point2 = new TrajectoryPoint();
+
+		/* did we get an underrun condition since last time we checked ? */
+		if (_status.hasUnderrun) {
+			/* better log it so we know about it */
+			Instrumentation.OnUnderrun();
+			/*
+			 * clear the error. This flag does not auto clear, this way 
+			 * we never miss logging it.
+			 */
+			_talon2.clearMotionProfileHasUnderrun(0);
+		}
+		/*
+		 * just in case we are interrupting another MP and there is still buffer
+		 * points in memory, clear it.
+		 */
+		_talon2.clearMotionProfileTrajectories();
+
+		/* set the base trajectory period to zero, use the individual trajectory period below */
+		//_talon.configMotionProfileTrajectoryPeriod(0, 10);
+		
+		/* This is fast since it's just into our TOP buffer */
+		for (int i = 0; i < totalCnt; ++i) {
+			double positionRot = profile2[i][0];
+			double velocityRPM = profile2[i][1];
+			/* for each point, fill our structure and pass it to API */
+			point2.position = positionRot * 1440; //Convert Revolutions to Units
+			point2.velocity = velocityRPM * 1440 / 600.0; //Convert RPM to Units/100ms
+			point2.headingDeg = 0; /* future feature - not used in this example*/
+			point2.profileSlotSelect0 = 0; /* which set of gains would you like to use [0,3]? */
+			point2.profileSlotSelect1 = 0; /* future feature  - not used in this example - cascaded PID [0,1], leave zero */
+			point2.timeDur = GetTrajectoryDuration((int)profile2[i][2]);
+			point2.zeroPos = false;
+			if (i == 0)
+				point2.zeroPos = true; /* set this to true on the first point */
+
+			point2.isLastPoint = false;
+			if ((i + 1) == totalCnt)
+				point2.isLastPoint = true; /* set this to true on the last point  */
+
+			_talon2.pushMotionProfileTrajectory(point2);
 		}
 	}
 	/**

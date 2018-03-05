@@ -45,6 +45,7 @@ public class Robot extends TimedRobot {
 
 	MotionProfileExample _example;
 	WPI_TalonSRX _talon;
+	WPI_TalonSRX _talon2;
 	
 	saveEncoder save = new saveEncoder();
 	double timeloop = 0;
@@ -122,13 +123,16 @@ public class Robot extends TimedRobot {
 //
 //        visionThread.start();
         _talon = RobotMap.driveTrainLeftMotor;
-        _example = new MotionProfileExample(_talon);
+        _talon2 = RobotMap.driveTrainRightMotor;
+        _example = new MotionProfileExample(_talon, _talon2);
         _talon.configMotionProfileTrajectoryPeriod(10, 10); 
+        _talon2.configMotionProfileTrajectoryPeriod(10, 10); 
 		/*
 		 * status 10 provides the trajectory target for motion profile AND
 		 * motion magic
 		 */
 		_talon.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, 10);
+		_talon2.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, 10);
     }
 
     /**
@@ -164,6 +168,7 @@ public class Robot extends TimedRobot {
     	SetValueMotionProfile setOutput = _example.getSetValue();
 
 		_talon.set(ControlMode.MotionProfile, setOutput.value);
+		_talon2.set(ControlMode.MotionProfile, setOutput.value);
 //    	double centerX;
 //        synchronized (imgLock) {
 //            centerX = this.centerX;

@@ -50,7 +50,7 @@ public class AutoDriveForward extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-    	if (Math.abs(Robot.driveTrain.getEncoder()) > Math.abs(dis/18.84956)) {
+    	if (Math.abs(Robot.driveTrain.getEncoder()) < Math.abs(dis/18.84956)) {
             return true;
         } else {
         	return false;

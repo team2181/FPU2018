@@ -48,7 +48,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: [DigitalChannel]
-          value: '4'
+          value: '6'
       Base: Limit Switch
       Name: SpinStop
     - Children:
@@ -216,7 +216,7 @@ Children:
           default: '0'
           name: Channel A Channel (Digital)
           validators: *id008
-          value: '1'
+          value: '4'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
           name: Distance Per Pulse, validators: null, value: 0.05236}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
@@ -238,7 +238,7 @@ Children:
           default: '0'
           name: Channel B Channel (Digital)
           validators: *id012
-          value: '0'
+          value: '5'
       Base: Quadrature Encoder
       Name: RightEncoder
     - Children: []
@@ -402,7 +402,7 @@ Children:
           default: '0'
           name: Channel A Channel (Digital)
           validators: *id008
-          value: '5'
+          value: '0'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
           name: Distance Per Pulse, validators: null, value: 1.0}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
@@ -424,7 +424,7 @@ Children:
           default: '0'
           name: Channel B Channel (Digital)
           validators: *id012
-          value: '6'
+          value: '1'
       Base: Quadrature Encoder
       Name: HeightEncoder
     - Children:

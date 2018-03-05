@@ -29,6 +29,10 @@ import org.usfirst.frc2181.FPU2018.MyPipeline;
 import org.usfirst.frc2181.FPU2018.commands.*;
 import org.usfirst.frc2181.FPU2018.subsystems.*;
 import org.usfirst.frc2181.FPU2018.Robot.*;
+import org.usfirst.frc2181.FPU2018.RobotMap;
+import com.ctre.phoenix.motorcontrol.can.*;
+import com.ctre.phoenix.motion.*;
+import com.ctre.phoenix.motorcontrol.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -39,6 +43,9 @@ import org.usfirst.frc2181.FPU2018.Robot.*;
  */
 public class Robot extends TimedRobot {
 
+	MotionProfileExample _example;
+	WPI_TalonSRX _talon;
+	
 	saveEncoder save = new saveEncoder();
 	double timeloop = 0;
 	double timenow = 0;
@@ -114,7 +121,14 @@ public class Robot extends TimedRobot {
 //        });
 //
 //        visionThread.start();
-        
+        _talon = RobotMap.driveTrainLeftMotor;
+        _example = new MotionProfileExample(_talon);
+        _talon.configMotionProfileTrajectoryPeriod(10, 10); 
+		/*
+		 * status 10 provides the trajectory target for motion profile AND
+		 * motion magic
+		 */
+		_talon.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, 10);
     }
 
     /**
@@ -123,7 +137,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void disabledInit(){
-
+    	_example.reset();
     }
 
     @Override
@@ -133,11 +147,12 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
-        autonomousCommand = chooser.getSelected();
+        //autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+        //if (autonomousCommand != null) autonomousCommand.start();
     	//driveTrain.setSetpoint(320.0);
     	//driveTrain.enable();
+    	_example.startMotionProfile();
     }
 
     /**
@@ -145,6 +160,10 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void autonomousPeriodic() {
+    	_example.control();
+    	SetValueMotionProfile setOutput = _example.getSetValue();
+
+		_talon.set(ControlMode.MotionProfile, setOutput.value);
 //    	double centerX;
 //        synchronized (imgLock) {
 //            centerX = this.centerX;
@@ -155,7 +174,7 @@ public class Robot extends TimedRobot {
 //        //double turn = avg - (IMG_WIDTH / 2);
 //        //driveTrain.driveAuto(0, -turn*0.1/10);
 //        SmartDashboard.putNumber("Vision XPos", avg);
-        Scheduler.getInstance().run();
+        //Scheduler.getInstance().run();
     	//double val = SmartDashboard.getNumber("pos", 0);
     	//SmartDashboard.putNumber("pos2", 2.0*val);
     }
@@ -163,7 +182,7 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
     	driveTrain.disable();
-    	save.startWrite("recent.csv");
+//    	save.startWrite("C:\\Users\\jpiv1\\new\\FPU2018\\src\\org\\usfirst\\frc2181\\FPU2018\\recent.csv");
     	timenow = System.currentTimeMillis();
         // This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to
@@ -178,11 +197,11 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        timeloop = System.currentTimeMillis();
-        save.writeInfo(RobotMap.driveTrainLeftMotor.getSelectedSensorPosition(0),
-        			   RobotMap.driveTrainLeftMotor.getSelectedSensorVelocity(0),
-        			   timeloop-timenow);
-        timenow = timeloop;
+//        timeloop = System.currentTimeMillis();
+//        save.writeInfo(RobotMap.driveTrainLeftMotor.getSelectedSensorPosition(0),
+//        			   RobotMap.driveTrainLeftMotor.getSelectedSensorVelocity(0),
+//        			   timeloop-timenow);
+//        timenow = timeloop;
     }
     
 }

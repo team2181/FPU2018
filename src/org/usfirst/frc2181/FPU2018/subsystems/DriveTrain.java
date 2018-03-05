@@ -31,6 +31,8 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import java.lang.Math;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 /**
  *
@@ -84,6 +86,8 @@ public class DriveTrain extends PIDSubsystem {
         
         leftMotor2.follow(leftMotor);
         rightMotor2.follow(rightMotor);
+        
+        //leftMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
     }
 
     @Override
@@ -148,8 +152,9 @@ public class DriveTrain extends PIDSubsystem {
     }
     
     public void drive(Joystick j) {
-    	double spd = 0.8 * j.getRawAxis(1);
-    	double rot = -0.8 * j.getRawAxis(4);
+    	double spd = -1 * j.getRawAxis(1);
+    	if (Math.abs(spd) < .1) {spd = 0;}
+    	double rot = -1 * j.getRawAxis(4);
     	double ramp = 1.5;
     	if (rot == 0 && spd == 0) {
     		ramp = 1.5;
@@ -162,12 +167,15 @@ public class DriveTrain extends PIDSubsystem {
     	}
     
     public void driveAuto(double spd, double rot) {
-    	//SmartDashboard.putNumber("Left Encoder", leftEncoder.getDistance());
-    	//SmartDashboard.putNumber("Right Encoder", rightEncoder.getDistance());
+    	SmartDashboard.putNumber("Left Encoder D", leftMotor.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("Right Encoder D", rightEncoder.getDistance());
     	SmartDashboard.putNumber("Gyro", gyro.getAngle());
     	SmartDashboard.putNumber("Ultrasonic", ultrasonic.getRangeInches());
     	SmartDashboard.putString("Mode", mode);
-    	diffDrive.arcadeDrive(spd, rot);
+    	SmartDashboard.putNumber("Joy Pos", spd);
+    	//leftMotor.changeControlMode(ControlMode.MotionMagic);
+    	leftMotor.set(ControlMode.Position, spd*1440*3); 
+    	//diffDrive.arcadeDrive(spd, rot);
     }
     
     public void setMode(String s) {

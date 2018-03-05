@@ -42,6 +42,7 @@ public class saveEncoder {
         }catch(IOException e) {
     
             System.out.println("Exception: Javas shouldn't quit but yours did (Close the file)");
+            System.out.println(e);
         }
         
         
@@ -66,6 +67,7 @@ public class saveEncoder {
         }catch(IOException e) {
     
             System.out.println("Exception: Javas shouldn't quit but yours did (Close the file)");
+            System.out.println(e);
         }
         
     }

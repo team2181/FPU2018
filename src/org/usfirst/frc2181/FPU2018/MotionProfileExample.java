@@ -50,6 +50,10 @@ public class MotionProfileExample {
 	 */
 	private WPI_TalonSRX _talon;
 	private WPI_TalonSRX _talon2;
+	
+	private double [][]prof1;
+	private double [][]prof2;
+	private int kNum;
 	/**
 	 * State machine to make sure we let enough of the motion profile stream to
 	 * talon before we fire it.
@@ -108,9 +112,12 @@ public class MotionProfileExample {
 	 * @param talon
 	 *            reference to Talon object to fetch motion profile status from.
 	 */
-	public MotionProfileExample(WPI_TalonSRX talon, WPI_TalonSRX talon2) {
+	public MotionProfileExample(WPI_TalonSRX talon, WPI_TalonSRX talon2, double [][]p1, double [][]p2, int kN) {
 		_talon = talon;
 		_talon2 = talon2;
+		prof1 = p1;
+		prof2 = p2;
+		kNum = kN;
 		/*
 		 * since our MP is 10ms per point, set the control frame rate and the
 		 * notifer to half that
@@ -270,7 +277,7 @@ public class MotionProfileExample {
 	/** Start filling the MPs to all of the involved Talons. */
 	private void startFilling() {
 		/* since this example only has one talon, just update that one */
-		startFilling(GeneratedMotionProfile.Points, GeneratedMotionProfile.Points2, GeneratedMotionProfile.kNumPoints);
+		startFilling(prof1, prof2, kNum);
 	}
 
 	private void startFilling(double[][] profile, double[][] profile2, int totalCnt) {

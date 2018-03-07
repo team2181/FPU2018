@@ -31,11 +31,12 @@ public class AutoLeft extends CommandGroup {
 //    	NetworkTableInstance offSeasonNetworkTable = NetworkTableInstance.create();
 //    	offSeasonNetworkTable.startClient("10.0.100.5");
 //    	gameData = offSeasonNetworkTable.getTable("OffseasonFMSInfo").getEntry("GameData").getString("defaultValue");
-    	addSequential(new DrivePID(-12)); // in inches // start backwards
-    	addSequential(new TurnPID(37.22)); // in degrees
-    	addSequential(new DrivePID(-45.15)); //probably should be like 120 later 
-    	addSequential(new TurnPID(-35.22));
-    	addSequential(new AutoFlippyDoUp(.5));
+//    	addSequential(new DrivePID(-12)); // in inches // start backwards
+//    	addSequential(new TurnPID(37.22)); // in degrees
+//    	addSequential(new DrivePID(-45.15)); //probably should be like 120 later 
+//    	addSequential(new TurnPID(-35.22));
+//    	addSequential(new AutoFlippyDoUp(.5));
+        addSequential(new AutoPath("left"));
 		//if(gameData.charAt(0) == 'L')
 		//{
 			//addSequential(new AutoFlippyDoUp(.5))

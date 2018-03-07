@@ -89,7 +89,7 @@ public class Instrumentation {
 			System.out.format("%-9s\t", pos);
 			System.out.format("%-9s\t", vel);
 			System.out.format("%-9s\t", status.profileSlotSelect);
-			//System.out.format("%-9s\t", status.timeDurMs);
+			System.out.format("%-9s\t", status.timeDurMs);
 
 			System.out.format("\n");
 		}

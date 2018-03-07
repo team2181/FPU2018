@@ -43,9 +43,9 @@ import com.ctre.phoenix.motorcontrol.*;
  */
 public class Robot extends TimedRobot {
 
-	MotionProfileExample _example;
-	WPI_TalonSRX _talon;
-	WPI_TalonSRX _talon2;
+//	MotionProfileExample _example;
+//	WPI_TalonSRX _talon;
+//	WPI_TalonSRX _talon2;
 	
 	saveEncoder save = new saveEncoder();
 	double timeloop = 0;
@@ -122,17 +122,17 @@ public class Robot extends TimedRobot {
 //        });
 //
 //        visionThread.start();
-        _talon = RobotMap.driveTrainLeftMotor;
-        _talon2 = RobotMap.driveTrainRightMotor;
-        _example = new MotionProfileExample(_talon, _talon2, GeneratedMotionProfile.PointsL1, GeneratedMotionProfile.PointsL2, GeneratedMotionProfile.kNumPointsL);
-        _talon.configMotionProfileTrajectoryPeriod(10, 10); 
-        _talon2.configMotionProfileTrajectoryPeriod(10, 10); 
-		/*
-		 * status 10 provides the trajectory target for motion profile AND
-		 * motion magic
-		 */
-		_talon.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, 10);
-		_talon2.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, 10);
+//        _talon = RobotMap.driveTrainLeftMotor;
+//        _talon2 = RobotMap.driveTrainRightMotor;
+//        _example = new MotionProfileExample(_talon, _talon2, GeneratedMotionProfile.PointsL1, GeneratedMotionProfile.PointsL2, GeneratedMotionProfile.kNumPointsL);
+//        _talon.configMotionProfileTrajectoryPeriod(10, 10); 
+//        _talon2.configMotionProfileTrajectoryPeriod(10, 10); 
+//		/*
+//		 * status 10 provides the trajectory target for motion profile AND
+//		 * motion magic
+//		 */
+//		_talon.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, 10);
+//		_talon2.setStatusFramePeriod(StatusFrameEnhanced.Status_10_MotionMagic, 10, 10);
     }
 
     /**
@@ -141,7 +141,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void disabledInit(){
-    	_example.reset();
+//    	_example.reset();
     }
 
     @Override

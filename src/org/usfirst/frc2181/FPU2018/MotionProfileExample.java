@@ -39,6 +39,7 @@ public class MotionProfileExample {
 	 * keep one copy.
 	 */
 	private MotionProfileStatus _status = new MotionProfileStatus();
+	private MotionProfileStatus _status2 = new MotionProfileStatus();
 
 	/** additional cache for holding the active trajectory point */
 	double _pos=0,_vel=0,_heading=0;
@@ -101,7 +102,7 @@ public class MotionProfileExample {
 	 * every 10ms.
 	 */
 	class PeriodicRunnable implements java.lang.Runnable {
-	    public void run() {  _talon.processMotionProfileBuffer(); _talon2.processMotionProfileBuffer();  }
+	    public void run() {  _talon2.processMotionProfileBuffer(); _talon.processMotionProfileBuffer();  }
 	}
 	Notifier _notifer = new Notifier(new PeriodicRunnable());
 	
@@ -157,7 +158,7 @@ public class MotionProfileExample {
 	public void control() {
 		/* Get the motion profile status every loop */
 		_talon.getMotionProfileStatus(_status);
-		_talon2.getMotionProfileStatus(_status);
+		_talon2.getMotionProfileStatus(_status2);
 
 		/*
 		 * track time, this is rudimentary but that's okay, we just want to make
@@ -247,7 +248,7 @@ public class MotionProfileExample {
 
 			/* Get the motion profile status every loop */
 			_talon.getMotionProfileStatus(_status);
-			_talon2.getMotionProfileStatus(_status);
+			_talon2.getMotionProfileStatus(_status2);
 			_heading = _talon.getActiveTrajectoryHeading();
 			_pos = _talon.getActiveTrajectoryPosition();
 			_vel = _talon.getActiveTrajectoryVelocity();
@@ -330,7 +331,7 @@ public class MotionProfileExample {
 		TrajectoryPoint point2 = new TrajectoryPoint();
 
 		/* did we get an underrun condition since last time we checked ? */
-		if (_status.hasUnderrun) {
+		if (_status2.hasUnderrun) {
 			/* better log it so we know about it */
 			Instrumentation.OnUnderrun();
 			/*
@@ -368,6 +369,7 @@ public class MotionProfileExample {
 				point2.isLastPoint = true; /* set this to true on the last point  */
 
 			_talon2.pushMotionProfileTrajectory(point2);
+			System.out.println("moo");
 		}
 	}
 	/**

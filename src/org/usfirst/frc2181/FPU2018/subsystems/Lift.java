@@ -60,6 +60,7 @@ public class Lift extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
+        setLock(true);
     }
 
     @Override

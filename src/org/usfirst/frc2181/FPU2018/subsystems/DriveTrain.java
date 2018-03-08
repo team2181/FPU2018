@@ -169,7 +169,7 @@ public class DriveTrain extends PIDSubsystem {
     public void driveAuto(double spd, double rot) {
     	SmartDashboard.putNumber("Left Encoder D", leftMotor.getSelectedSensorVelocity(0));
     	System.out.println(leftMotor.getSelectedSensorPosition(0));
-    	SmartDashboard.putNumber("Right Encoder D", rightEncoder.getDistance());
+    	SmartDashboard.putNumber("Right Encoder D", rightMotor.getSelectedSensorPosition(0));
     	SmartDashboard.putNumber("Gyro", gyro.getAngle());
     	SmartDashboard.putNumber("Ultrasonic", ultrasonic.getRangeInches());
     	SmartDashboard.putString("Mode", mode);

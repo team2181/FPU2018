@@ -37,18 +37,19 @@ public class LockIt extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+    	Robot.lift.setLock(false);
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.lift.setLock(true);
+    	Robot.lift.setLock(false);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

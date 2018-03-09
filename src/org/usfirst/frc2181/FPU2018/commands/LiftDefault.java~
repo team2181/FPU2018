@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2181.FPU2018.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc2181.FPU2018.RobotMap;
 import org.usfirst.frc2181.FPU2018.Robot;
 import edu.wpi.first.wpilibj.Joystick;
 
@@ -47,7 +48,12 @@ public class LiftDefault extends Command {
     @Override
     protected void execute() {
         //System.out.println(xleftTrigger);
-    	Robot.lift.setMotors(0.0);
+    	double move = joy.getRawAxis(2)-joy.getRawAxis(3)*0.3;
+    	if (move<0 && !RobotMap.limitTop.get() || move>0 && !RobotMap.limitBottom.get()) {
+    		Robot.lift.setMotors(joy.getRawAxis(2)-joy.getRawAxis(3));
+    	} else {
+    		Robot.lift.setMotors(0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

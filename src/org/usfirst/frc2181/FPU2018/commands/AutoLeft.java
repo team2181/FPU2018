@@ -40,7 +40,7 @@ public class AutoLeft extends CommandGroup {
         if(gameData.charAt(0) == 'L') {
         	addSequential(new AutoFlippyDoUp(.5));
         }
-        addSequential(new AutoPath("stage2"));
+        //addSequential(new AutoPath("stage2"));
 		//if(gameData.charAt(0) == 'L')
 		//{
 			//addSequential(new AutoFlippyDoUp(.5))

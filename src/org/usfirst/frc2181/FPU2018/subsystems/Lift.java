@@ -60,7 +60,6 @@ public class Lift extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-        setLock(true);
     }
 
     @Override
@@ -99,6 +98,10 @@ public class Lift extends PIDSubsystem {
     }
     public void setLock(boolean locked) {
     	locking.set(locked); 
+    }
+    
+    public boolean getLock() {
+    	return locking.get();
     }
     
     public void setMotors(double zuccForce) {

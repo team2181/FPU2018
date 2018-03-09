@@ -28,6 +28,8 @@ public class AutoRight extends CommandGroup {
 
         gameData = DriverStation.getInstance().getGameSpecificMessage();
         addSequential(new AutoPath("right"));
+        addSequential(new AutoFlippyDoUp(.5));
+        addSequential(new AutoPath("stage2"));
 //    	NetworkTableInstance offSeasonNetworkTable = NetworkTableInstance.create();
 //    	offSeasonNetworkTable.startClient("10.0.100.5");
 //    	gameData = offSeasonNetworkTable.getTable("OffseasonFMSInfo").getEntry("GameData").getString("defaultValue");

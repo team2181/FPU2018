@@ -152,9 +152,9 @@ public class DriveTrain extends PIDSubsystem {
     }
     
     public void drive(Joystick j) {
-    	double spd = -1 * j.getRawAxis(1);
+    	double spd = -.7 * j.getRawAxis(1);
     	if (Math.abs(spd) < .1) {spd = 0;}
-    	double rot = -1 * j.getRawAxis(4);
+    	double rot = -.7 * j.getRawAxis(4);
     	double ramp = 1.5;
     	if (rot == 0 && spd == 0) {
     		ramp = 1.5;
@@ -167,7 +167,7 @@ public class DriveTrain extends PIDSubsystem {
     	}
     
     public void driveAuto(double spd, double rot) {
-    	SmartDashboard.putNumber("Left Encoder D", leftMotor.getSelectedSensorVelocity(0));
+    	SmartDashboard.putNumber("Left Encoder D", leftMotor.getSelectedSensorPosition(0));
     	System.out.println(leftMotor.getSelectedSensorPosition(0));
     	SmartDashboard.putNumber("Right Encoder D", rightMotor.getSelectedSensorPosition(0));
     	SmartDashboard.putNumber("Gyro", gyro.getAngle());

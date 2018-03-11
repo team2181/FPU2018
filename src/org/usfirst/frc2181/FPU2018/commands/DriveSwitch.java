@@ -51,7 +51,7 @@ public class DriveSwitch extends Command {
     @Override
     protected void execute() {
     	
-    	//Robot.driveTrain.setDriveMode(true);
+    	Robot.driveTrain.setDriveMode(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()

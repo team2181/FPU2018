@@ -48,7 +48,7 @@ public class FlippyDoo extends Subsystem {
 
     @Override
     public void periodic() {
-//TAG   	SmartDashboard.putNumber("Ultrasonic Distance", ultrasonic.getRangeInches());
+//SD   	SmartDashboard.putNumber("Ultrasonic Distance", ultrasonic.getRangeInches());
         // Put code here to be run every loop
 
     }
@@ -57,7 +57,7 @@ public class FlippyDoo extends Subsystem {
     // here. Call these from Commands.
     public void setPusher(boolean on) {
     	pusher.set(on);
-    	SmartDashboard.putBoolean("flippydoo", on);
+    	SmartDashboard.putBoolean("FlippyDoo", on);
     }
 
 }

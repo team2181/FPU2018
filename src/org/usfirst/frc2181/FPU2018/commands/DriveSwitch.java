@@ -40,11 +40,11 @@ public class DriveSwitch extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	SmartDashboard.putNumber("pressure", (RobotMap.pressureGauge.getVoltage()-.5)*50+5);
+//SD    	SmartDashboard.putNumber("Pressure", (RobotMap.pressureGauge.getVoltage()-.5)*50+5);
     	if ((RobotMap.pressureGauge.getVoltage()-.5)*50+5 > 40) {
     		Robot.driveTrain.setDriveMode(true);
     	}
-    	SmartDashboard.putString("drive mode change", "activated");
+    	SmartDashboard.putString("Drive Mode Change", "Activated");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -63,7 +63,7 @@ public class DriveSwitch extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-    	SmartDashboard.putString("drive mode change", "deactivated");
+    	SmartDashboard.putString("Drive Mode Change", "Deactivated");
     	Robot.driveTrain.setDriveMode(false);
     }
 
@@ -71,7 +71,7 @@ public class DriveSwitch extends Command {
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
-    	SmartDashboard.putString("drive mode change", "deactivated");
+    	SmartDashboard.putString("Drive Mode Change", "Deactivated");
     	Robot.driveTrain.setDriveMode(false);
     }
 }

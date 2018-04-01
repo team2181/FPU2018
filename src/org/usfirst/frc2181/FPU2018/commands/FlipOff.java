@@ -61,7 +61,7 @@ public class FlipOff extends Command {
     @Override
     protected void end() {
     	//Robot.flippyDoo.setPusher(false);
-    	SmartDashboard.putString("done with flip","yes");
+    	SmartDashboard.putString("Done with flip","Yes");
     }
 
     // Called when another command which requires one or more of the same

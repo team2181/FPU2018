@@ -43,6 +43,7 @@ public class Robot extends TimedRobot {
     SendableChooser<Command> chooser = new SendableChooser<>();
     
     public static SendableChooser<Boolean> chooser2 = new SendableChooser<>();
+    public static SendableChooser<String> recordChoose = new SendableChooser<>();
 
     public static OI oi;
     public String gameData;
@@ -101,6 +102,10 @@ public class Robot extends TimedRobot {
         chooser2.addDefault("No", false);
         chooser2.addObject("Yes", true);
         SmartDashboard.putData("Go for it", chooser2);
+        
+        recordChoose.addDefault("Left", "left.txt");
+        recordChoose.addObject("Middle", "middle.txt");
+        recordChoose.addObject("Right", "right.txt");
         
 //        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 //        camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
